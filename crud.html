@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="crud.css">
+</head>
+<body>
+    <h1>Book Appointment:-</h1>
+   <form id="from">
+    <lebel for="username">Name:
+        <input type="text" id="name" name="username"/>
+        
+    </label><br><br>
+    <lebel for="email">Email:
+        <input type="email" id="emailid" name="email"/>
+        
+    </label>
+    <button type="submit" id="submitbutton">Submit</button>
+   </form> 
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+<script>
+   console.log("cheacking")
+const form=document.querySelector('form');
+form.addEventListener("submit",function(event){
+      event.preventDefault() ;
+      let name=document.getElementById("name").value;
+      let email=document.getElementById("emailid").value;
+      const data = axios.get("https://crudcrud.com/api/84d8e0fbe4de49afbf894b9326e452af/appointment",{
+        "name":`"${name}"`,
+        "email":`"${email}"`
+        }).then((respone)=>{
+        console.log(respone.data)
+        })
+        .catch((err)=>{
+        console.log(err)
+        
+    })
+    console.log(name,email)
+    
+})
+</script>
+</html>
